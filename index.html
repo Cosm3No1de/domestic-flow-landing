@@ -485,85 +485,165 @@
         }
 
         /* --- Media Queries & Responsive --- */
+        /* --- Media Queries & Responsive --- */
         @media (max-width: 768px) {
             :root {
-                --radius-lg: 0.75rem;
+                --radius-lg: 1rem;
+                /* Keep rounded corners soft */
+            }
+
+            body {
+                font-size: 16px;
+                /* Ensure legible base size */
+            }
+
+            .navbar {
+                padding: 0.75rem 0;
             }
 
             .navbar .container {
                 flex-wrap: wrap;
                 gap: 1rem;
-                justify-content: center;
+                justify-content: space-between;
+                /* Space out logo and button */
+            }
+
+            /* Logo adjustment */
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            /* Adjust CTA button in Navbar */
+            .navbar .btn-primary {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
             }
 
             .nav-links {
                 display: none;
-                /* Keep hidden on mobile for simplicity */
             }
 
             .hero {
-                padding: 3rem 0;
+                padding: 3rem 0 2rem;
                 min-height: auto;
+                text-align: left;
+                /* Align text left for better readability on small screens? Or keep center? Center is okay but needs space */
+                text-align: center;
             }
 
             .hero-title {
-                font-size: 2rem;
-                line-height: 1.2;
+                font-size: 2.2rem;
+                /* Slightly larger than 2rem for impact */
+                line-height: 1.15;
+                margin-bottom: 1rem;
+                padding: 0 0.5rem;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.05rem;
                 padding: 0 1rem;
+                line-height: 1.5;
+                margin-bottom: 2.5rem;
             }
 
             .cta-group {
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                gap: 1rem;
+                gap: 0.75rem;
             }
 
             .btn {
                 width: 100%;
-                max-width: 320px;
+                max-width: 100%;
+                /* Full width for easy tapping */
                 display: flex;
                 justify-content: center;
+                padding: 1rem;
+                /* Taller touch target */
+                font-size: 1.1rem;
             }
 
             .section {
-                padding: 3rem 0;
+                padding: 4rem 0;
             }
 
             .section-header {
                 margin-bottom: 2.5rem;
+                padding: 0 1rem;
             }
 
             .section-header h2 {
                 font-size: 1.75rem;
             }
 
-            /* Fix App Showcase on Mobile */
+            /* Enhanced Card Stacking */
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 0.5rem;
+                /* Subtle inset */
+            }
+
+            .card,
+            .testimonial-card {
+                padding: 1.5rem;
+                /* Reduce padding slightly */
+                border-radius: 1rem;
+            }
+
+            /* Fix App Showcase on Mobile - Stylish overlap instead of tall stack */
             .app-showcase-container {
-                height: auto !important;
+                height: 420px !important;
                 flex-direction: column;
                 align-items: center;
                 margin-top: 3rem !important;
-                gap: 1rem !important;
-                transform: scale(0.8);
-                margin-bottom: -50px;
+                gap: 0 !important;
+                transform: none;
+                /* remove scale */
+                margin-bottom: 0;
             }
 
             .phone-card {
-                /* Reset rotations for cleaner vertical stack */
-                transform: rotate(0deg) !important;
-                margin-bottom: 1rem;
-                height: 400px !important;
-                /* Smaller on mobile */
+                position: absolute !important;
                 width: 240px !important;
+                height: 480px !important;
+                transition: transform 0.5s ease;
+            }
+
+            /* Front Card (Pro) */
+            .phone-card:nth-child(2) {
+                z-index: 2;
+                transform: rotate(3deg) translateY(20px) !important;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+            }
+
+            /* Back Card (Client) */
+            .phone-card:nth-child(1) {
+                z-index: 1;
+                transform: rotate(-6deg) translateY(-20px) scale(0.95) !important;
+                opacity: 0.9;
             }
 
             .testimonials-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .tech-container {
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .footer-col ul li a {
+                padding: 0.5rem;
+                /* Larger touch area for links */
+                display: inline-block;
             }
         }
     </style>
