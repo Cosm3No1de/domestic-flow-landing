@@ -450,26 +450,120 @@
             font-size: 0.875rem;
         }
 
-        /* --- Media Queries --- */
+        /* Default Desktop Styles for Phone Showcase (Moved from inline) */
+        .app-showcase-container {
+            margin-top: 4rem;
+            position: relative;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            overflow: hidden;
+        }
+
+        .phone-card {
+            width: 280px;
+            height: 500px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-card:nth-child(1) {
+            background: white;
+            border: 8px solid var(--primary-blue);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: rotate(-5deg) translateY(20px);
+        }
+
+        .phone-card:nth-child(2) {
+            background: var(--primary-blue);
+            border: 8px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            transform: rotate(5deg) translateY(40px);
+        }
+
+        /* --- Media Queries & Responsive --- */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            :root {
+                --radius-lg: 0.75rem;
+            }
+
+            .navbar .container {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
             }
 
             .nav-links {
                 display: none;
+                /* Keep hidden on mobile for simplicity */
             }
 
-            /* Simplified mobile menu hiding */
+            .hero {
+                padding: 3rem 0;
+                min-height: auto;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
             .cta-group {
                 flex-direction: column;
+                align-items: center;
                 width: 100%;
-                max-width: 350px;
-                margin: 0 auto;
+                gap: 1rem;
             }
 
             .btn {
                 width: 100%;
+                max-width: 320px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            /* Fix App Showcase on Mobile */
+            .app-showcase-container {
+                height: auto !important;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 3rem !important;
+                gap: 1rem !important;
+                transform: scale(0.8);
+                margin-bottom: -50px;
+            }
+
+            .phone-card {
+                /* Reset rotations for cleaner vertical stack */
+                transform: rotate(0deg) !important;
+                margin-bottom: 1rem;
+                height: 400px !important;
+                /* Smaller on mobile */
+                width: 240px !important;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -516,19 +610,16 @@
             </div>
 
             <!-- App Placeholder Showcase (Suggested by prompt to leave space) -->
-            <div
-                style="margin-top: 4rem; position: relative; height: 300px; display: flex; justify-content: center; gap: 2rem; overflow: hidden;">
+            <div class="app-showcase-container">
                 <!-- Abstract Phone Representations -->
-                <div
-                    style="width: 280px; height: 500px; background: white; border: 8px solid var(--primary-blue); border-radius: 30px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; transform: rotate(-5deg) translateY(20px);">
+                <div class="phone-card">
                     <div style="text-align: center; padding: 2rem;">
                         <i class="fa-solid fa-map-location-dot"
                             style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 1rem; opacity: 0.2"></i>
                         <p style="color: #999; font-weight: 500;">App Cliente</p>
                     </div>
                 </div>
-                <div
-                    style="width: 280px; height: 500px; background: var(--primary-blue); border: 8px solid #334155; border-radius: 30px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; transform: rotate(5deg) translateY(40px);">
+                <div class="phone-card">
                     <div style="text-align: center; padding: 2rem;">
                         <i class="fa-solid fa-wallet"
                             style="font-size: 4rem; color: var(--success-green); margin-bottom: 1rem; opacity: 0.8"></i>
